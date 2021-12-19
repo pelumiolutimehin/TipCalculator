@@ -67,6 +67,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="saveBillAmount:" destination="BYZ-38-t0r" eventType="editingChanged" id="tIn-Xv-IGM"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DaV-Ea-e3o">
                                 <rect key="frame" x="297" y="284" width="97" height="29"/>
@@ -154,12 +157,27 @@
                                     <action selector="saveTip3:" destination="Nsq-6M-2P1" eventType="editingDidEnd" id="iJs-4x-zpp"/>
                                 </connections>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dark Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySN-On-lLB">
+                                <rect key="frame" x="20" y="304" width="201" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AbZ-wz-Ice">
+                                <rect key="frame" x="123" y="314" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="lightingMode:" destination="Nsq-6M-2P1" eventType="valueChanged" id="WhA-8L-gvX"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="osA-eb-0gW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="Wug-gt-yWl"/>
                     <connections>
+                        <outlet property="lightSwitch" destination="AbZ-wz-Ice" id="nHL-mS-MKg"/>
                         <outlet property="tipPercent1TextField" destination="5Qw-nR-ugD" id="XyJ-Cv-LLx"/>
                         <outlet property="tipPercent2TextField" destination="byq-uG-jsB" id="Osv-8J-3M4"/>
                         <outlet property="tipPercent3TextField" destination="bOC-9d-yUq" id="4qo-Qr-lgs"/>

@@ -12,18 +12,31 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var tipPercent1TextField: UITextField!
     @IBOutlet weak var tipPercent2TextField: UITextField!
     @IBOutlet weak var tipPercent3TextField: UITextField!
+    @IBOutlet weak var lightSwitch: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         // Do any additional setup after loading the view.
         let defaults = UserDefaults.standard
         
+        if defaults.bool(forKey: "darkMode"){
+            overrideUserInterfaceStyle = .dark
+            lightSwitch.setOn(true, animated: false)
+            tipPercent1TextField.backgroundColor = .white
+            tipPercent2TextField.backgroundColor = .white
+            tipPercent3TextField.backgroundColor = .white
+            tipPercent1TextField.textColor = .black
+            tipPercent2TextField.textColor = .black
+            tipPercent3TextField.textColor = .black
+        }
+        else{
+            overrideUserInterfaceStyle = .light
+            lightSwitch.setOn(false, animated: false)
+        }
         
         let tipPercent1 = defaults.string(forKey: "tipPercent1")
-        // Get a Double value.
         let tipPercent2 = defaults.string(forKey: "tipPercent2")
-        // Get a Bool value.
         let tipPercent3 = defaults.string(forKey: "tipPercent3")
         
         tipPercent1TextField.text = tipPercent1?.appending("%")
@@ -67,6 +80,24 @@ class SettingsViewController: UIViewController {
         defaults.synchronize()
     }
 
+    @IBAction func lightingMode(_ sender: Any) {
+        if lightSwitch.isOn{
+            overrideUserInterfaceStyle = .dark
+            defaults.set(true, forKey:"darkMode")
+            tipPercent1TextField.backgroundColor = .white
+            tipPercent2TextField.backgroundColor = .white
+            tipPercent3TextField.backgroundColor = .white
+            tipPercent1TextField.textColor = .black
+            tipPercent2TextField.textColor = .black
+            tipPercent3TextField.textColor = .black
+        }
+        else{
+            overrideUserInterfaceStyle = .light
+            defaults.set(false, forKey:"darkMode")
+        }
+        
+        defaults.synchronize()
+    }
     
     /*
     // MARK: - Navigation
